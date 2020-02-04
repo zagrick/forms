@@ -1,0 +1,64 @@
+@import 'nullstyle.scss';
+
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  	display: flex;
+	justify-content: $j;
+	align-items: $c;
+	flex-wrap: $w;
+}
+
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	color: #59b000;
+	font-family: sans-serif;
+}
+
+.container {
+	margin: 0 auto; 
+}
+
+.header {
+	background: #f0dda7;
+	padding: 20px;
+	font-weight: bold;
+	&__body {
+		text-align: center;
+	}
+}
+
+.main {
+	display: flex;
+	flex: 1 1 auto;
+}
+
+.sidebar {
+	@include jcw($j, $c, $w);
+	background: #cfbe93;
+	flex: 1 1 auto;
+	padding: 20px;
+	font-weight: bold;
+}
+
+.content {
+	background: #fffdbc;
+	flex: 1 1 auto;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+@media (min-width: 1024px) and (max-width: 1599px) {
+	.sidebar,
+	.content {
+		flex: 0 0 auto;
+	}
+}
+@media (min-width: 640px) and (max-width: 1023px) {}
+@media (max-width: 639px) {}

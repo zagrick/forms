@@ -1,0 +1,103 @@
+@import 'nullstyle.scss';
+
+$j: center;
+$c: center;
+$w: wrap;
+
+@mixin jcw($j, $c, $w) {
+  	display: flex;
+	justify-content: $j;
+	align-items: $c;
+	flex-wrap: $w;
+}
+
+.form {
+	margin: 20px auto;
+	form {
+		display: flex;
+		border: 1px solid;
+		padding: 5px 16px 3%;
+		color: #000;
+		p {
+			width: 480px;
+			padding: 0 16px;
+		}
+		input {
+			width: 100%;
+			border: 1px solid #ccc;
+    		padding: 10px 20px;
+    		background: none;
+    		margin-top: 2px;
+		}
+		label {
+			font-size: 10px;
+    		font-weight: bold;
+		}
+		span {
+			font-size: 0;
+			font-weight: bold;
+		}
+		.red {
+			&:focus,
+			&:valid {
+				border: 1px solid red;
+				margin-bottom: 2px;
+			}
+		}
+		.red:focus ~ .redtext,
+		.red:valid ~ .redtext {
+			font-size: 10px;
+			color: red;
+		}
+	}
+}
+
+@media (min-width: 1024px) and (max-width: 1599px) {
+	.content {
+		flex: 1 1 auto;
+	}
+	.form {
+		form {
+			padding: 5px 3% 5% 1%;
+			p {
+				width: 30%;
+				padding: 0 1%;
+				flex: 1 1 auto;
+			}
+		}
+	}
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+	.form {
+		form {
+			@include jcw(flex-start, $c, $w);
+			padding: 1% 2% 4%;
+			p {
+				width: 44%;
+				padding: 0 2%;
+				flex: 1 1 auto;
+				&:last-child {
+					margin-top: 5%;
+					input {
+						width: 48%;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 639px) {
+	.form {
+		padding: 0 20%;
+		form {
+			@include jcw(flex-start, $c, $w);
+			padding: 5% 10% 0;
+			p {
+				width: 80%;
+				margin-bottom: 10%;
+				padding: 0;
+				flex: 1 1 auto;
+			}
+		}
+	}
+}
